@@ -1,12 +1,19 @@
- export default class ApiService {
-   constructor() {}
+//  export default class ApiService {
+//    constructor() {}
 
-   fetchCountries(name) {
-    const queryString = `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`;
-    if (!resp.ok) {
-      throw new Error(response.statusText)
-  }   
-    return fetch(queryString).then(r => r.json());
-}
-}
+//    fetchCountries(name) {
+//     const queryString = `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`;
+   
+//     return fetch(queryString).then(r => r.json());
+// }
+// }
 
+export const fetchCountries = name =>
+  fetch(
+    `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
