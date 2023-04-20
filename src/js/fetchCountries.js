@@ -9,7 +9,7 @@
         throw new Error(response.statusText)
     }
     }
-    return r.json());
+    r.json());
 }
 }
 
